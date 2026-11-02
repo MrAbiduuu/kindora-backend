@@ -27,7 +27,13 @@ app.get("/events", async (req, res) => {
   res.send(result);
 });
 
-
+// add events
+app.post("/events/create", async (req, res) => {
+  const data = req.body;
+  const result = await eventsCollection.insertOne(data);
+  console.log(result);
+  res.send(result);
+});
 // api url: http://localhost:5000/events
 app.get("/", (req, res) => {
   res.send({ message: "Hello from the server!" });
