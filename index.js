@@ -106,6 +106,33 @@ app.put("/events/:id", async (req, res) => {
     res.status(500).send({ message: "Failed to update event" });
   }
 });
+// Delete an event
+app.delete("/events/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { organizerEmail } = req.body;
+
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send({ message: "Invalid event ID" });
+    }
+
+    const result = await eventsCollection.deleteOne({
+      _id: new ObjectId(id),
+      organizerEmail: organizerEmail,
+    });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).send({
+        message: "Event not found or you are not the organizer",
+      });
+    }
+
+    res.send({ message: "Event deleted successfully" });
+  } catch (error) {
+    res.status(500).send({ message: "Failed to delete event" });
+  }
+});
+
 
 
 
