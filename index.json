@@ -1,0 +1,542 @@
+[
+  {
+    "id": 1,
+    "title": "Winter Clothes Distribution – Kamalapur Slum",
+    "type": "Winter Relief",
+    "date": "2026-11-15",
+    "location": "Kamalapur Railway Colony, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/winter,clothes,charity?lock=1",
+    "description": "Distributing warm sweaters, jackets and socks to 300+ low-income families living near Kamalapur before the cold wave arrives.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Sort clothes by size and gender at the sorting desk before distribution begins.",
+      "Hand over items respectfully and never take photos of recipients without consent.",
+      "Follow the token system so every family receives items in an orderly queue."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Blanket Relief Drive – Kurigram Char Areas",
+    "type": "Winter Relief",
+    "date": "2026-12-05",
+    "location": "Char Rajibpur, Kurigram",
+    "thumbnail": "https://loremflickr.com/1200/675/blanket,relief,winter?lock=2",
+    "description": "Delivering 500 thick blankets to riverine char communities in Kurigram, one of the coldest regions of Bangladesh.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Dress in warm layers and carry a water bottle; boat travel to the chars can be cold and windy.",
+      "Wear a life jacket at all times during river crossings.",
+      "Prioritise elderly people, children and pregnant women during distribution."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Winter Relief Night Walk – Street Dwellers",
+    "type": "Winter Relief",
+    "date": "2026-12-20",
+    "location": "Gulistan to Motijheel Area, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/winter,night,street?lock=3",
+    "description": "A late-night volunteer walk covering Gulistan, Paltan and Motijheel to give blankets and warm clothes to people sleeping on the streets.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Move in groups of at least four and stay with your team leader at all times.",
+      "Carry a torch or phone light and keep your phone charged for emergencies.",
+      "Do not wake sleeping people; place items gently beside them or ask nearby people to pass them on."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Sweater Collection & Sorting Day",
+    "type": "Winter Relief",
+    "date": "2026-11-08",
+    "location": "University of Scholars Campus, Banani, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/clothes,donation,sorting?lock=4",
+    "description": "Collect, wash-check, sort and pack donated winter clothes ready for upcoming relief distributions across Bangladesh.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear gloves and a mask while handling used clothes.",
+      "Reject torn, stained or unusable items politely and set them aside for recycling.",
+      "Label each packed box with size, gender and quantity using the provided marker."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Winter Relief for Tea Garden Workers",
+    "type": "Winter Relief",
+    "date": "2027-01-09",
+    "location": "Srimangal Tea Estate, Moulvibazar",
+    "thumbnail": "https://loremflickr.com/1200/675/tea,garden,winter?lock=5",
+    "description": "Providing jackets, caps and blankets to tea garden workers and their families in the cold northeastern hills.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Respect local customs and speak politely with the workers and community leaders.",
+      "Wear sturdy shoes; paths inside the tea estate can be muddy and uneven.",
+      "Coordinate with the estate representative before starting distribution."
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Warm Kids Campaign – School Uniform Sweaters",
+    "type": "Winter Relief",
+    "date": "2027-01-16",
+    "location": "Government Primary School, Savar, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/children,school,sweater?lock=6",
+    "description": "Gifting school sweaters and warm socks to 250 primary school students from low-income families.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Be patient and friendly with children; help them try on sweaters for the right fit.",
+      "Follow the school's child-safety rules and never take children out of the school premises.",
+      "Take photos only with the school's permission."
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Tree Plantation Day – Hatirjheel Banks",
+    "type": "Plantation",
+    "date": "2026-11-21",
+    "location": "Hatirjheel Lake Embankment, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/tree,planting,volunteers?lock=7",
+    "description": "Planting 500 native saplings such as neem, krishnachura and jarul along the Hatirjheel embankment to improve air quality.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear old clothes and closed shoes as you will be working with soil.",
+      "Bring a hat, sunscreen and a reusable water bottle.",
+      "Plant saplings at the marked spots and water each one right after planting."
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Green Campus Initiative – 300 Saplings",
+    "type": "Plantation",
+    "date": "2026-11-28",
+    "location": "University of Scholars Campus, Banani, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/sapling,campus,garden?lock=8",
+    "description": "Students and staff come together to plant fruit and shade trees around campus and set up a care roster for each tree.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Bring a trowel or small spade if you have one; tools will also be provided.",
+      "Sign up for the tree-care roster so each sapling is watered for the next three months.",
+      "Attach the name tag to the sapling you plant."
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Mangrove Restoration – Sundarbans Fringe",
+    "type": "Plantation",
+    "date": "2027-01-23",
+    "location": "Koyra Upazila, Khulna",
+    "thumbnail": "https://loremflickr.com/1200/675/mangrove,planting,coast?lock=9",
+    "description": "Replanting mangrove seedlings on eroded riverbanks to protect coastal villages from storm surges.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear waterproof boots or be ready to work barefoot in muddy tidal soil.",
+      "Follow the local guide's instructions on planting depth and spacing.",
+      "Use mosquito repellent and carry safe drinking water; the area is remote."
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Roadside Plantation Drive – Gazipur Highway",
+    "type": "Plantation",
+    "date": "2026-12-12",
+    "location": "Dhaka–Mymensingh Highway, Gazipur",
+    "thumbnail": "https://loremflickr.com/1200/675/roadside,trees,planting?lock=10",
+    "description": "Planting shade trees along a highway stretch with guards to protect each sapling from livestock.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear a high-visibility vest (provided) and stay on the designated work side of the road.",
+      "Never cross the highway alone; follow the safety marshals.",
+      "Help install bamboo tree guards around each sapling."
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Dhanmondi Lake Cleanup Drive",
+    "type": "Cleanup",
+    "date": "2026-11-14",
+    "location": "Dhanmondi Lake, Road 8A, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/lake,cleanup,volunteers?lock=11",
+    "description": "Cleaning litter and plastic waste from the lakeside walkways and shoreline, then sorting recyclables.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear gloves and closed shoes; gloves and trash bags will be provided.",
+      "Do not pick up sharp objects or medical waste with bare hands; report them to the team leader.",
+      "Separate plastic, glass and paper into the colour-coded bags."
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Buriganga Riverbank Cleanup",
+    "type": "Cleanup",
+    "date": "2026-12-06",
+    "location": "Sadarghat, Old Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/river,pollution,cleanup?lock=12",
+    "description": "A large-scale volunteer effort to remove solid waste from the Buriganga riverbank and raise awareness about river pollution.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear a face mask, gloves and rubber boots; the area has strong odours and slippery ground.",
+      "Stay away from the water's edge unless assigned and supervised.",
+      "Wash your hands thoroughly after the cleanup and take the provided sanitiser."
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Laboni Beach Cleanup – Cox's Bazar",
+    "type": "Cleanup",
+    "date": "2027-01-30",
+    "location": "Laboni Beach, Cox's Bazar",
+    "thumbnail": "https://loremflickr.com/1200/675/beach,cleanup,plastic?lock=13",
+    "description": "Collecting plastic bottles, nets and packaging from the world's longest natural sea beach and weighing the waste collected.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear a hat, sunglasses and sunscreen; the beach has little shade.",
+      "Do not swim during the cleanup and keep away from rough waves.",
+      "Record the waste type and weight at the data desk for the cleanup report."
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Clean Neighbourhood Day – Mirpur 10",
+    "type": "Cleanup",
+    "date": "2026-11-22",
+    "location": "Mirpur 10 Circle, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/street,cleaning,community?lock=14",
+    "description": "Sweeping streets, clearing blocked drains and painting wall murals with local residents and shopkeepers.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wear gloves and a mask when clearing drains and garbage piles.",
+      "Stay alert to traffic and work only in the sections cordoned off by the team.",
+      "Talk politely with shopkeepers and residents; encourage them to use bins."
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Winter Donation Fair – Books & Clothes",
+    "type": "Donation",
+    "date": "2026-11-29",
+    "location": "Suhrawardy Udyan, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/donation,books,charity?lock=15",
+    "description": "A public donation stall collecting books, clothes, shoes and school supplies from the community for families in need.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Greet donors warmly and give a receipt slip for every donation.",
+      "Record donated items in the logbook with quantity and category.",
+      "Accept only clean, usable items and politely decline damaged goods."
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Blood Donation Camp",
+    "type": "Donation",
+    "date": "2026-12-10",
+    "location": "University of Scholars Auditorium, Banani, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/blood,donation,hospital?lock=16",
+    "description": "A campus blood donation camp in partnership with a licensed blood bank to support patients with thalassemia and accident victims.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Help with registration and guide donors to the screening desk; do not give medical advice.",
+      "Make sure donors have eaten and are well hydrated before donating.",
+      "Keep donor information confidential and follow the medical team's instructions."
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Zakat & Cash Aid Distribution for Widows",
+    "type": "Donation",
+    "date": "2026-12-18",
+    "location": "Community Hall, Mohammadpur, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/community,help,charity?lock=17",
+    "description": "Verified cash support and grocery vouchers handed to widows and single mothers to help them through the winter months.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Dress modestly and treat every beneficiary with dignity and privacy.",
+      "Verify each beneficiary's token and ID against the approved list before handing over aid.",
+      "Do not discuss amounts or personal details outside the venue."
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Toy & Storybook Donation for Orphans",
+    "type": "Donation",
+    "date": "2027-01-10",
+    "location": "Shishu Polli Orphanage, Mirpur, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/orphanage,children,toys?lock=18",
+    "description": "Donating toys, storybooks and art supplies to children at a local orphanage, with a fun afternoon of storytelling and games.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Bring new or like-new toys and books suitable for ages 4 to 14.",
+      "Follow the orphanage's child-protection rules; stay in common areas only.",
+      "Prepare a short story or game to share with the children."
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Free Hot Meal Distribution – Dhaka Medical College",
+    "type": "Food Drive",
+    "date": "2026-11-13",
+    "location": "Dhaka Medical College Hospital Gate, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/food,distribution,volunteers?lock=19",
+    "description": "Serving hot khichuri meals to patients' attendants and the homeless outside the hospital.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Wash your hands and wear gloves, a mask and an apron while serving food.",
+      "Serve in an orderly queue, giving priority to the elderly, women and children.",
+      "Collect used plates and dispose of them in the bins provided to keep the area clean."
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Iftar-Style Community Meal for Rickshaw Pullers",
+    "type": "Food Drive",
+    "date": "2026-12-04",
+    "location": "Farmgate, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/community,meal,street,food?lock=20",
+    "description": "Providing a nutritious evening meal packet with rice, egg curry and fruit to 400 rickshaw pullers and day labourers.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Pack meals in sealed containers with a spoon and tissue; follow the packing checklist.",
+      "Keep food covered until distribution and maintain hygiene at all times.",
+      "Distribute politely along the road without blocking traffic."
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Ration Pack Distribution – Flood-Prone Villages",
+    "type": "Food Drive",
+    "date": "2027-01-17",
+    "location": "Sariakandi, Bogura",
+    "thumbnail": "https://loremflickr.com/1200/675/rice,grocery,relief?lock=21",
+    "description": "Distributing monthly ration packs containing rice, lentils, oil, salt and potatoes to 200 families affected by river erosion.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Be ready to lift and carry sacks; wear comfortable shoes and use proper lifting posture.",
+      "Check each family's coupon against the beneficiary list before giving a pack.",
+      "Stay with your group during village visits and respect the local leaders' guidance."
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Weekend Food Share – Street Children",
+    "type": "Food Drive",
+    "date": "2026-11-07",
+    "location": "Kawran Bazar, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/children,food,sharing?lock=22",
+    "description": "A weekly food share serving breakfast and a healthy snack to street children, with a short hygiene awareness session.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Be kind and patient with the children and speak to them with respect.",
+      "Do not give food that may be unsafe; use only the prepared packs.",
+      "Help lead the hand-washing demonstration before the meal begins."
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Free Medical Camp – Savar Villages",
+    "type": "Health Camp",
+    "date": "2026-11-20",
+    "location": "Union Parishad Complex, Savar, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/medical,camp,doctor?lock=23",
+    "description": "A one-day free medical camp offering general check-ups, blood pressure and sugar tests, and free basic medicines.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Help with patient registration, queue management and guiding patients to the doctors.",
+      "Do not give any medicine or medical advice; leave that to the licensed doctors.",
+      "Keep patient information confidential and wear a mask and gloves where required."
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Eye Care & Cataract Screening Camp",
+    "type": "Health Camp",
+    "date": "2026-12-13",
+    "location": "Community Clinic, Tongi, Gazipur",
+    "thumbnail": "https://loremflickr.com/1200/675/eye,checkup,clinic?lock=24",
+    "description": "Free eye tests, reading glasses and cataract surgery referrals for elderly residents with partner ophthalmologists.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Assist elderly patients patiently, holding their arm while walking and guiding them to each station.",
+      "Keep the testing area quiet and well-lit; do not move equipment.",
+      "Note referrals accurately on each patient's slip so no one is missed."
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Women's Health & Hygiene Awareness Camp",
+    "type": "Health Camp",
+    "date": "2027-01-06",
+    "location": "Women's Community Centre, Narayanganj",
+    "thumbnail": "https://loremflickr.com/1200/675/women,health,awareness?lock=25",
+    "description": "Health check-ups, a menstrual hygiene session and free hygiene kits for women and adolescent girls.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Female volunteers will be prioritised at the registration and counselling desks.",
+      "Maintain strict privacy and a respectful, non-judgmental attitude at all times.",
+      "Distribute hygiene kits discreetly and answer only basic, approved questions."
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Winter Illness Prevention & Vaccination Awareness",
+    "type": "Health Camp",
+    "date": "2026-12-27",
+    "location": "Kamlapur Community Centre, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/vaccination,health,clinic?lock=26",
+    "description": "Free flu and pneumonia screening, health talks on cold-season diseases, and referrals to government vaccination centres.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Use hand sanitiser frequently and wear a mask throughout the camp.",
+      "Distribute awareness leaflets and explain them in simple Bangla.",
+      "Direct anyone with severe symptoms straight to the on-site medical team."
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Free Evening School for Working Children",
+    "type": "Education",
+    "date": "2026-11-16",
+    "location": "Korail Community Learning Centre, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/children,classroom,learning?lock=27",
+    "description": "A weekly evening class teaching Bangla, English and basic maths to children who work during the day.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Prepare a short lesson plan in advance and bring simple teaching aids.",
+      "Be patient, encouraging and respectful with every child regardless of their level.",
+      "Follow the centre's child-protection policy and never ask for children's personal contact details."
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Career & Skills Workshop for Underprivileged Students",
+    "type": "Education",
+    "date": "2026-12-19",
+    "location": "University of Scholars Seminar Hall, Banani, Dhaka",
+    "thumbnail": "https://loremflickr.com/1200/675/students,workshop,seminar?lock=28",
+    "description": "A free workshop on CV writing, basic computer skills and scholarship opportunities for HSC and university students.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Dress in smart-casual attire as you will be mentoring and guiding students.",
+      "Bring a laptop if you will help with the computer skills session.",
+      "Offer honest, practical and supportive advice; avoid making promises about jobs or scholarships."
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Mobile Library & Reading Day",
+    "type": "Education",
+    "date": "2027-01-13",
+    "location": "Char Kukri Mukri Primary School, Bhola",
+    "thumbnail": "https://loremflickr.com/1200/675/library,children,reading?lock=29",
+    "description": "Setting up a mobile library with 600 storybooks and leading read-aloud sessions for rural school students.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Handle books carefully and help with sorting and cataloguing them by reading level.",
+      "Read aloud clearly and slowly, using expressions to keep children engaged.",
+      "Pack up all books at the end and tally them to ensure none are lost."
+    ]
+  },
+  {
+    "id": 30,
+    "title": "School Supply Kit Distribution",
+    "type": "Education",
+    "date": "2027-02-06",
+    "location": "Government Primary School, Gazipur Sadar",
+    "thumbnail": "https://loremflickr.com/1200/675/school,supplies,students?lock=30",
+    "description": "Giving school bags with notebooks, pencils, geometry boxes and water bottles to 300 students ahead of the new academic term.",
+    "organizerEmail": "dewan.abid.02.2006@gmail.com",
+    "volunteerGuidelines": [
+      "Please arrive 15 minutes before the scheduled time at the designated location.",
+      "Wear comfortable clothing suitable for physical social work and distribution.",
+      "Bring any pre-coordinated relief packages or distribution items if requested.",
+      "Pack each kit following the checklist so every child receives identical items.",
+      "Distribute by class in an orderly line with help from the class teachers.",
+      "Encourage students warmly and avoid comparing or singling out any child."
+    ]
+  }
+]
