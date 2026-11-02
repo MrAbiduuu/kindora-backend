@@ -46,8 +46,24 @@ app.get("/events/upcoming", async (req, res) => {
   res.send(result);
 });
 
+// Events created by a specific organizer (must be registered BEFORE /events/:id,
+// otherwise "organizer" would be parsed as an event id)
+// api url: http://localhost:5000/events/organizer/<email>
+app.get("/events/organizer/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const result = await eventsCollection
+      .find({ organizerEmail: email })
+      .sort({ date: 1 })
+      .toArray();
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: "Failed to fetch organizer events" });
+  }
+});
+
 // Get individual event by ID
-app.get("/event/:id", async (req, res) => {
+app.get("/events/:id", async (req, res) => {
   const { id } = req.params;
 
   console.log("Requested ID:", id);
@@ -59,39 +75,39 @@ app.get("/event/:id", async (req, res) => {
   res.send(result);
 });
 
-// single event details (includes volunteers array)
-// api url: http://localhost:5000/events/:id
-app.get("/events/:id", async (req, res) => {
+// Update an event
+app.put("/events/:id", async (req, res) => {
   try {
-    const result = await eventsCollection.findOne({
-      _id: new ObjectId(req.params.id),
-    });
-    if (!result) return res.status(404).send({ message: "Event not found" });
-    res.send(result);
-  } catch (err) {
-    res.status(400).send({ message: "Invalid event id" });
+    const { id } = req.params;
+    const { organizerEmail, ...updatedData } = req.body;
+
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send({ message: "Invalid event ID" });
+    }
+
+    const result = await eventsCollection.updateOne(
+      {
+        _id: new ObjectId(id),
+        organizerEmail: organizerEmail,
+      },
+      {
+        $set: updatedData,
+      },
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).send({
+        message: "Event not found or you are not the organizer",
+      });
+    }
+
+    res.send({ message: "Event updated successfully" });
+  } catch (error) {
+    res.status(500).send({ message: "Failed to update event" });
   }
 });
 
-// join an event as a volunteer (adds email once, res.detail volunteers)
-// api url: http://localhost:5000/events/:id/join   body: { email }
-app.post("/events/:id/join", async (req, res) => {
-  try {
-    const { email } = req.body || {};
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      return res.status(400).send({ message: "A valid volunteer email is required" });
-    }
-    const event = await eventsCollection.findOneAndUpdate(
-      { _id: new ObjectId(req.params.id) },
-      { $addToSet: { volunteers: email } },
-      { returnDocument: "after", projection: { volunteers: 1 } }
-    );
-    if (!event) return res.status(404).send({ message: "Event not found" });
-    res.send({ volunteers: event.volunteers ?? [] });
-  } catch (err) {
-    res.status(400).send({ message: "Invalid event id" });
-  }
-});
+
 
 // api url: http://localhost:5000/events
 app.get("/", (req, res) => {
