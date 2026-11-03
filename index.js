@@ -2,93 +2,299 @@ import express from "express";
 import cors from "cors";
 import { MongoClient, ObjectId } from "mongodb";
 import "dotenv/config";
-const port = 5000;
+import { createRemoteJWKSet, jwtVerify } from "jose";
+
 const app = express();
-app.use(cors());
-app.use(express.json());
+const port = process.env.PORT || 5000;
 
-const client = new MongoClient(process.env.MONGODB_URI);
-// console.log("MongoDB URI:", process.env.MONGODB_URI);
-export async function connectToMongoDB() {
-  try {
-    await client.connect();
-    console.log("You successfully connected to MongoDB!");
-    return client;
-  } catch (err) {
-    console.dir(err);
-  }
+// ==============================
+// 1. Environment configuration
+// ==============================
+
+const AUTH_BASE_URL = process.env.AUTH_BASE_URL;
+const CLIENT_URL = process.env.CLIENT_URL;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!AUTH_BASE_URL) {
+  throw new Error("AUTH_BASE_URL is missing");
 }
-const mongoClient = await connectToMongoDB();
-const db = mongoClient.db("kindora");
-const eventsCollection = db.collection("events");
-//show events
-app.get("/events", async (req, res) => {
-  const result = await eventsCollection.find({}).toArray();
-  res.send(result);
-});
 
-// add events
-app.post("/events/create", async (req, res) => {
-  const data = req.body;
-  const result = await eventsCollection.insertOne(data);
-  console.log(result);
-  res.send(result);
-});
+if (!MONGODB_URI) {
+  throw new Error("MONGODB_URI is missing");
+}
 
-// upcoming events (date >= today, soonest first)
-// api url: http://localhost:5000/events/upcoming
-app.get("/events/upcoming", async (req, res) => {
-  const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
-  const result = await eventsCollection
-    .find({ date: { $gte: today } })
-    .sort({ date: 1 })
-    .toArray();
-  res.send(result);
-});
+if (!CLIENT_URL) {
+  throw new Error("CLIENT_URL is missing");
+}
 
-// Events created by a specific organizer (must be registered BEFORE /events/:id,
-// otherwise "organizer" would be parsed as an event id)
-// api url: http://localhost:5000/events/organizer/<email>
-app.get("/events/organizer/:email", async (req, res) => {
+// ==============================
+// 2. Middleware
+// ==============================
+
+app.use(
+  cors({
+    origin: CLIENT_URL.split(",").map((url) => url.trim()),
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
+app.use(express.json({ limit: "1mb" }));
+
+// ==============================
+// 3. Better Auth JWT verification
+// ==============================
+
+const JWKS = createRemoteJWKSet(new URL(`${AUTH_BASE_URL}/api/auth/jwks`));
+
+const verifyToken = async (req, res, next) => {
   try {
-    const { email } = req.params;
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).send({
+        message: "Unauthorized: Token missing",
+      });
+    }
+
+    const token = authHeader.slice(7).trim();
+
+    if (!token) {
+      return res.status(401).send({
+        message: "Unauthorized: Token missing",
+      });
+    }
+
+    const { payload } = await jwtVerify(token, JWKS);
+
+    if (!payload.sub) {
+      return res.status(401).send({
+        message: "Invalid token: User ID missing",
+      });
+    }
+
+    req.user = payload;
+
+    next();
+  } catch (error) {
+    console.error("JWT verification failed:", error.message);
+
+    return res.status(401).send({
+      message: "Invalid or expired token",
+    });
+  }
+};
+
+// ==============================
+// 4. Authenticated user helper
+// ==============================
+
+const getUserEmail = (req) => {
+  if (typeof req.user?.email !== "string") {
+    return null;
+  }
+
+  return req.user.email.trim().toLowerCase();
+};
+
+const requireUserEmail = (req, res) => {
+  const email = getUserEmail(req);
+
+  if (!email) {
+    res.status(401).send({
+      message: "Authenticated user email is unavailable",
+    });
+
+    return null;
+  }
+
+  return email;
+};
+
+// ==============================
+// 5. MongoDB connection
+// ==============================
+
+const client = new MongoClient(MONGODB_URI);
+
+await client.connect();
+
+console.log("Successfully connected to MongoDB!");
+
+const db = client.db("kindora");
+const eventsCollection = db.collection("events");
+
+// ==============================
+// 6. Public routes
+// ==============================
+
+// Server status
+app.get("/", (req, res) => {
+  res.send({
+    message: "Hello from the Kindora server!",
+  });
+});
+
+// Upcoming events
+app.get("/events/upcoming", async (req, res) => {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+
+    const result = await eventsCollection
+      .find({ date: { $gte: today } })
+      .sort({ date: 1 })
+      .toArray();
+
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to fetch upcoming events",
+    });
+  }
+});
+
+// Individual event
+app.get("/events/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send({
+        message: "Invalid event ID",
+      });
+    }
+
+    const result = await eventsCollection.findOne({
+      _id: new ObjectId(id),
+    });
+
+    if (!result) {
+      return res.status(404).send({
+        message: "Event not found",
+      });
+    }
+
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to fetch event",
+    });
+  }
+});
+
+// ==============================
+// 7. Protected routes
+// ==============================
+
+// Show all events
+app.get("/events", verifyToken, async (req, res) => {
+  try {
+    const result = await eventsCollection.find({}).toArray();
+
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to fetch events",
+    });
+  }
+});
+
+// Create event
+app.post("/events/create", verifyToken, async (req, res) => {
+  try {
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
+    const data = {
+      ...req.body,
+      organizerEmail: email,
+      organizerId: req.user.sub,
+    };
+
+    // Never accept a client-supplied ID
+    delete data._id;
+
+    const result = await eventsCollection.insertOne(data);
+
+    res.status(201).send({
+      message: "Event created successfully",
+      insertedId: result.insertedId,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to create event",
+    });
+  }
+});
+
+// Organizer events
+app.get("/events/organizer/:email", verifyToken, async (req, res) => {
+  try {
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
+    const requestedEmail = req.params.email.trim().toLowerCase();
+
+    if (requestedEmail !== email) {
+      return res.status(403).send({
+        message: "You cannot access another organizer's events",
+      });
+    }
+
     const result = await eventsCollection
       .find({ organizerEmail: email })
       .sort({ date: 1 })
       .toArray();
+
     res.send(result);
   } catch (error) {
-    res.status(500).send({ message: "Failed to fetch organizer events" });
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to fetch organizer events",
+    });
   }
 });
 
-// Get individual event by ID
-app.get("/events/:id", async (req, res) => {
-  const { id } = req.params;
-
-  console.log("Requested ID:", id);
-
-  const result = await eventsCollection.findOne({
-    _id: new ObjectId(id),
-  });
-
-  res.send(result);
-});
-
-// Update an event
-app.put("/events/:id", async (req, res) => {
+// Update event
+app.put("/events/:id", verifyToken, async (req, res) => {
   try {
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
     const { id } = req.params;
-    const { organizerEmail, ...updatedData } = req.body;
 
     if (!ObjectId.isValid(id)) {
-      return res.status(400).send({ message: "Invalid event ID" });
+      return res.status(400).send({
+        message: "Invalid event ID",
+      });
     }
+
+    const updatedData = { ...req.body };
+
+    // Protected fields cannot be changed by the client
+    delete updatedData._id;
+    delete updatedData.organizerEmail;
+    delete updatedData.organizerId;
+    delete updatedData.volunteers;
+    delete updatedData.volunteerEmails;
+    delete updatedData.joinedUsers;
 
     const result = await eventsCollection.updateOne(
       {
         _id: new ObjectId(id),
-        organizerEmail: organizerEmail,
+        organizerEmail: email,
       },
       {
         $set: updatedData,
@@ -101,24 +307,36 @@ app.put("/events/:id", async (req, res) => {
       });
     }
 
-    res.send({ message: "Event updated successfully" });
+    res.send({
+      message: "Event updated successfully",
+    });
   } catch (error) {
-    res.status(500).send({ message: "Failed to update event" });
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to update event",
+    });
   }
 });
-// Delete an event
-app.delete("/events/:id", async (req, res) => {
+
+// Delete event
+app.delete("/events/:id", verifyToken, async (req, res) => {
   try {
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
     const { id } = req.params;
-    const { organizerEmail } = req.body;
 
     if (!ObjectId.isValid(id)) {
-      return res.status(400).send({ message: "Invalid event ID" });
+      return res.status(400).send({
+        message: "Invalid event ID",
+      });
     }
 
     const result = await eventsCollection.deleteOne({
       _id: new ObjectId(id),
-      organizerEmail: organizerEmail,
+      organizerEmail: email,
     });
 
     if (result.deletedCount === 0) {
@@ -127,40 +345,42 @@ app.delete("/events/:id", async (req, res) => {
       });
     }
 
-    res.send({ message: "Event deleted successfully" });
+    res.send({
+      message: "Event deleted successfully",
+    });
   } catch (error) {
-    res.status(500).send({ message: "Failed to delete event" });
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to delete event",
+    });
   }
 });
 
-// Join an event as a volunteer.
-// Body: { email, name } — volunteers are stored by their first name,
-// and volunteerEmails keeps their email for "already joined" checks.
-// api url: http://localhost:5000/events/<id>/join
-app.post("/events/:id/join", async (req, res) => {
+// Join event
+app.post("/events/:id/join", verifyToken, async (req, res) => {
   try {
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
     const { id } = req.params;
-    const { email, name } = req.body;
 
     if (!ObjectId.isValid(id)) {
-      return res.status(400).send({ message: "Invalid event ID" });
+      return res.status(400).send({
+        message: "Invalid event ID",
+      });
     }
 
-    if (!email) {
-      return res
-        .status(401)
-        .send({ message: "Please log in to join this event." });
-    }
+    const name = typeof req.user.name === "string" ? req.user.name.trim() : "";
 
-    // First name of the user (falls back to the email's local part)
     const firstName =
-      (name && String(name).trim().split(/\s+/)[0]) ||
-      String(email)
-        .split("@")[0]
-        .split(/[._-]+/)[0];
+      name.split(/\s+/)[0] || email.split("@")[0].split(/[._-]+/)[0];
 
     const result = await eventsCollection.updateOne(
-      { _id: new ObjectId(id) },
+      {
+        _id: new ObjectId(id),
+      },
       {
         $addToSet: {
           volunteers: firstName,
@@ -171,21 +391,42 @@ app.post("/events/:id/join", async (req, res) => {
     );
 
     if (result.matchedCount === 0) {
-      return res.status(404).send({ message: "Event not found" });
+      return res.status(404).send({
+        message: "Event not found",
+      });
     }
 
-    const updated = await eventsCollection.findOne({ _id: new ObjectId(id) });
-    res.send({ message: "Successfully joined the event", ...updated });
+    const updated = await eventsCollection.findOne({
+      _id: new ObjectId(id),
+    });
+
+    res.send({
+      message: "Successfully joined the event",
+      ...updated,
+    });
   } catch (error) {
-    res.status(500).send({ message: "Failed to join event" });
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to join event",
+    });
   }
 });
 
-// Get events joined by a specific user (email), sorted by event date
-// api url: http://localhost:5000/joined-events/<email>
-app.get("/joined-events/:email", async (req, res) => {
+// Joined events
+app.get("/joined-events/:email", verifyToken, async (req, res) => {
   try {
-    const { email } = req.params;
+    const email = requireUserEmail(req, res);
+
+    if (!email) return;
+
+    const requestedEmail = req.params.email.trim().toLowerCase();
+
+    if (requestedEmail !== email) {
+      return res.status(403).send({
+        message: "You cannot access another user's joined events",
+      });
+    }
 
     const result = await eventsCollection
       .find({ joinedUsers: email })
@@ -194,15 +435,18 @@ app.get("/joined-events/:email", async (req, res) => {
 
     res.send(result);
   } catch (error) {
-    res.status(500).send({ message: "Failed to fetch joined events" });
+    console.error(error);
+
+    res.status(500).send({
+      message: "Failed to fetch joined events",
+    });
   }
 });
 
-// api url: http://localhost:5000/events
-app.get("/", (req, res) => {
-  res.send({ message: "Hello from the server!" });
-});
+// ==============================
+// 8. Start server
+// ==============================
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Kindora server is running on port ${port}`);
 });
