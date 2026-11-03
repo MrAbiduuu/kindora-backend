@@ -133,7 +133,70 @@ app.delete("/events/:id", async (req, res) => {
   }
 });
 
+// Join an event as a volunteer.
+// Body: { email, name } — volunteers are stored by their first name,
+// and volunteerEmails keeps their email for "already joined" checks.
+// api url: http://localhost:5000/events/<id>/join
+app.post("/events/:id/join", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { email, name } = req.body;
 
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send({ message: "Invalid event ID" });
+    }
+
+    if (!email) {
+      return res
+        .status(401)
+        .send({ message: "Please log in to join this event." });
+    }
+
+    // First name of the user (falls back to the email's local part)
+    const firstName =
+      (name && String(name).trim().split(/\s+/)[0]) ||
+      String(email)
+        .split("@")[0]
+        .split(/[._-]+/)[0];
+
+    const result = await eventsCollection.updateOne(
+      { _id: new ObjectId(id) },
+      {
+        $addToSet: {
+          volunteers: firstName,
+          volunteerEmails: email,
+          joinedUsers: email,
+        },
+      },
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).send({ message: "Event not found" });
+    }
+
+    const updated = await eventsCollection.findOne({ _id: new ObjectId(id) });
+    res.send({ message: "Successfully joined the event", ...updated });
+  } catch (error) {
+    res.status(500).send({ message: "Failed to join event" });
+  }
+});
+
+// Get events joined by a specific user (email), sorted by event date
+// api url: http://localhost:5000/joined-events/<email>
+app.get("/joined-events/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    const result = await eventsCollection
+      .find({ joinedUsers: email })
+      .sort({ date: 1 })
+      .toArray();
+
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: "Failed to fetch joined events" });
+  }
+}); 
 
 
 // api url: http://localhost:5000/events
