@@ -196,47 +196,7 @@ app.get("/joined-events/:email", async (req, res) => {
   } catch (error) {
     res.status(500).send({ message: "Failed to fetch joined events" });
   }
-}); 
-
-app.delete("/events/:id/leave", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { email } = req.body;
-
-    if (!email) {
-      return res.status(400).send({
-        message: "Email is required",
-      });
-    }
-
-    const result = await eventsCollection.updateOne(
-      { _id: new ObjectId(id) },
-      {
-        $pull: {
-          volunteers: email,
-          volunteerEmails: email,
-        },
-      }
-    );
-
-    if (result.matchedCount === 0) {
-      return res.status(404).send({
-        message: "Event not found",
-      });
-    }
-
-    res.send({
-      success: true,
-      message: "You have left the event successfully",
-    });
-  } catch (error) {
-    res.status(500).send({
-      message: "Failed to leave event",
-      error: error.message,
-    });
-  }
 });
-
 
 // api url: http://localhost:5000/events
 app.get("/", (req, res) => {
