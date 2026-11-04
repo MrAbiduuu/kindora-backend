@@ -450,3 +450,5 @@ app.get("/joined-events/:email", verifyToken, async (req, res) => {
 app.listen(port, () => {
   console.log(`Kindora server is running on port ${port}`);
 });
+
+export default app;
